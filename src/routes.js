@@ -4,6 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Apresentation from './pages/Apresentation';
+import StepOne from './pages/Steps/StepOne';
+import StepTwo from './pages/Steps/StepTwo';
+import StepThree from './pages/Steps/StepThree';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +14,26 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Apresentation" component={Apresentation} />
+        <Stack.Screen
+          name="Apresentation"
+          component={Apresentation}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="StepOne"
+          component={StepOne}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="StepTwo"
+          component={StepTwo}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="StepThree"
+          component={StepThree}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
