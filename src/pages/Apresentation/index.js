@@ -1,103 +1,51 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {StyleSheet, View, StatusBar, Dimensions} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
+import Svg, {Path} from 'react-native-svg';
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  Container,
+  WaveContainer,
+  NameText,
+  LogoImage,
+  PrimaryText,
+  SecondaryText,
+  NextButton,
+} from './styles';
 
-const Apresentation: () => React$Node = () => (
-  <>
-    <StatusBar barStyle="dark-content" />
-    <SafeAreaView>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}>
-        <Header />
-        {global.HermesInternal == null ? null : (
-          <View style={styles.engine}>
-            <Text style={styles.footer}>Engine: Hermes</Text>
-          </View>
-        )}
-        <View style={styles.body}>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionDescription}>
-              Edit <Text style={styles.highlight}>App.js</Text> to change this
-              screen and then come back to see your edits.
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>See Your Changes</Text>
-            <Text style={styles.sectionDescription}>
-              <ReloadInstructions />
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Debug</Text>
-            <Text style={styles.sectionDescription}>
-              <DebugInstructions />
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
-          </View>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  </>
+import Logo from '~/assets/logo/codeforms.png';
+
+const windowWidth = Dimensions.get('screen').width;
+const windowHeight = Dimensions.get('screen').height;
+
+const Apresentation = ({navigation}) => (
+  <Container>
+    <NameText>CodeForms</NameText>
+    <LogoImage source={Logo} />
+    <PrimaryText>
+      Acesse, responda e envie seus formulários, em um único lugar.
+    </PrimaryText>
+    <SecondaryText>
+      Siga os passos e aprenda como usar a ferramenta!
+    </SecondaryText>
+    <NextButton onPress={() => navigation.navigate('StepOne')}>
+      <Icon name="rightcircleo" size={50} color="#fff" />
+    </NextButton>
+
+    <WaveContainer>
+      <Svg
+        height={windowHeight / 2}
+        width={windowWidth + 1}
+        viewBox="0 0 375 644"
+        preserveAspectRatio="none">
+        <Path
+          d="M-17.5 378.5C31.5 32.5 302.5 463 375 89C447.5 -285 375 644 375 644H0C0 644 -66.5 724.5 -17.5 378.5Z"
+          fill="#A75EF2"
+          stroke="#A75EF2"
+        />
+      </Svg>
+    </WaveContainer>
+  </Container>
 );
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
 
 export default Apresentation;
