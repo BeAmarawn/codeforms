@@ -130,10 +130,12 @@ android {
 
     defaultConfig {
         applicationId "com.codeforms"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 16 
+        targetSdkVersion 28
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
+        missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
     }
     splits {
         abi {
