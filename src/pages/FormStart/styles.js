@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   padding-top: 5%;
+  padding-bottom: 5%;
   justify-content: center;
   background-color: #fff;
 `;
@@ -16,6 +17,14 @@ export const PrincipalText = styled.Text`
 export const DescriptionText = styled.Text`
   margin-top: 20px;
   margin-left: 15px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #000;
+  font-family: 'Roboto-Regular';
+`;
+export const DueDateText = styled.Text`
+  margin-left: 15px;
+  margin-bottom: 10%;
   margin-right: 10px;
   font-size: 16px;
   color: #000;
