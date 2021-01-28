@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, StatusBar, Dimensions} from 'react-native';
+import {Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import Svg, {Path} from 'react-native-svg';
