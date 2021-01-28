@@ -7,6 +7,7 @@ import {
   ButtonText,
   EnterButton,
   DescriptionText,
+  DueDateText,
 } from './styles';
 
 const FormStart = ({route, navigation}) => {
@@ -30,9 +31,12 @@ const FormStart = ({route, navigation}) => {
   return (
     <Container>
       <ScrollView>
-        <DescriptionText>
-          Data de Validade: {formatDueDate(formData.dueDate)}
-        </DescriptionText>
+        <DueDateText>
+          Data de Validade:{' '}
+          {formData.dueDate
+            ? formatDueDate(formData.dueDate)
+            : 'Sem data de expiração'}
+        </DueDateText>
 
         <PrincipalText>{formData.title}</PrincipalText>
         <DescriptionText>{formData.description}</DescriptionText>

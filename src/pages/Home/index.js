@@ -15,7 +15,7 @@ const Home = ({navigation}) => (
     <NameText>CodeForms</NameText>
     <LogoImage source={Logo} />
 
-    <EnterButton>
+    <EnterButton onPress={() => navigation.navigate('QrCodeScan')}>
       <ButtonText>Ler QR code</ButtonText>
     </EnterButton>
     <EnterButton onPress={() => navigation.navigate('EnterCode')}>
