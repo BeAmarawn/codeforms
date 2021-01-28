@@ -5,10 +5,10 @@ export function startRequest(shortCode) {
   };
 }
 
-export function startSuccess(shortCode, form) {
+export function startSuccess(shortCode) {
   return {
     type: '@formState/START_SUCCESS',
-    payload: {shortCode, form},
+    payload: {shortCode},
   };
 }
 export function firstAcessConfirm(boolean) {
