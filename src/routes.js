@@ -15,6 +15,7 @@ import StepTwo from './pages/Steps/StepTwo';
 import StepThree from './pages/Steps/StepThree';
 import Home from './pages/Home';
 import EnterCode from './pages/EnterCode';
+import QrCodeScan from './pages/QrCodeScan';
 import FormStart from './pages/FormStart';
 
 const Stack = createStackNavigator();
@@ -68,6 +69,13 @@ export default function Routes() {
             component={EnterCode}
             options={{
               title: 'Inserir Código',
+            }}
+          />
+          <Stack.Screen
+            name="QrCodeScan"
+            component={QrCodeScan}
+            options={{
+              title: 'Leia o QR do seu Form',
             }}
           />
           <Stack.Screen
