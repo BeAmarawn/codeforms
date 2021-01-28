@@ -12,31 +12,24 @@ export const NameText = styled.Text`
   color: #6719b7;
   font-family: 'Roboto-Regular';
 `;
-export const PrimaryText = styled.Text`
-  text-align: center;
-  font-size: 25px;
-  color: #000;
-  font-family: 'Roboto-Medium';
-`;
-export const SecondaryText = styled.Text`
-  margin-top: 45%;
-  margin-bottom: 30px;
+export const ButtonText = styled.Text`
   text-align: center;
   font-size: 25px;
   color: #fff;
-  font-family: 'Roboto-Medium';
+  font-family: 'Roboto-Bold';
 `;
-export const NextButton = styled.TouchableOpacity`
-  margin-left: auto;
-  margin-right: 15px;
+export const EnterButton = styled.TouchableOpacity`
+  margin-bottom: 20px;
+  justify-content: center;
+  align-self: center;
+  border-radius: 32px;
+  width: 80%;
+  height: 65px;
+  background-color: #a75ef2;
 `;
 export const LogoImage = styled.Image`
   width: auto;
   height: 150px;
   margin-bottom: 20%;
   resize-mode: center;
-`;
-export const WaveContainer = styled.View`
-  z-index: -1;
-  margin-top: auto;
 `;
