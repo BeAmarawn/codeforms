@@ -14,7 +14,7 @@ const FormStart = ({route, navigation}) => {
   const {formData} = route.params;
 
   function handleStart() {
-    console.tron.log(formData);
+    navigation.navigate('FormScreen', {formData});
   }
 
   function formatDueDate(date) {
