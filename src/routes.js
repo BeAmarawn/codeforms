@@ -17,6 +17,7 @@ import Home from './pages/Home';
 import EnterCode from './pages/EnterCode';
 import QrCodeScan from './pages/QrCodeScan';
 import FormStart from './pages/FormStart';
+import FormScreen from './pages/FormScreen';
 
 const Stack = createStackNavigator();
 
@@ -82,7 +83,14 @@ export default function Routes() {
             name="FormStart"
             component={FormStart}
             options={{
-              title: 'Meu Formulários',
+              title: 'Avance para iniciar!',
+            }}
+          />
+          <Stack.Screen
+            name="FormScreen"
+            component={FormScreen}
+            options={{
+              title: '',
             }}
           />
         </Stack.Navigator>
