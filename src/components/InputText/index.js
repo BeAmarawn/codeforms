@@ -1,14 +1,14 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import {Text} from 'react-native';
-import {useField} from '@unform/core';
+import { Text } from 'react-native';
+import { useField } from '@unform/core';
 
-import {InputShortText, Container} from './styles';
+import { InputShortText, Container } from './styles';
 
-function InputText({name, field, ...rest}) {
+function InputText({ name, field, ...rest }) {
   const inputRef = useRef(null);
 
-  const {fieldName, registerField, defaultValue, error} = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
 
   useEffect(() => {
     inputRef.current.value = defaultValue;
@@ -24,7 +24,7 @@ function InputText({name, field, ...rest}) {
         ref.clear();
       },
       setValue(ref, value) {
-        ref.setNativeProps({text: value});
+        ref.setNativeProps({ text: value });
         inputRef.current.value = value;
       },
       getValue(ref) {
@@ -41,6 +41,8 @@ function InputText({name, field, ...rest}) {
         placeholder={field.mask}
         keyboardAppearance="dark"
         defaultValue={defaultValue}
+        errorStyle={{ color: 'red', fontSize: 15 }}
+        errorMessage={error}
         placeholderTextColor="#666360"
         onChangeText={(value) => {
           if (inputRef.current) {
@@ -49,7 +51,6 @@ function InputText({name, field, ...rest}) {
         }}
         {...rest}
       />
-      {error && <Text>{error}</Text>}
     </Container>
   );
 }

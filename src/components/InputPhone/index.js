@@ -1,14 +1,14 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import {Text} from 'react-native';
-import {useField} from '@unform/core';
+import { Text } from 'react-native';
+import { useField } from '@unform/core';
 
-import {PhoneInput, Container} from './styles';
+import { PhoneInput, Container } from './styles';
 
-function InputPhone({name, field, ...rest}) {
+function InputPhone({ name, field, ...rest }) {
   const inputRef = useRef(null);
 
-  const {fieldName, registerField, defaultValue, error} = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
 
   useEffect(() => {
     inputRef.current.value = defaultValue;
@@ -24,7 +24,7 @@ function InputPhone({name, field, ...rest}) {
         ref.clear();
       },
       setValue(ref, value) {
-        ref.setNativeProps({text: value});
+        ref.setNativeProps({ text: value });
         inputRef.current.value = value;
       },
       getValue(ref) {
@@ -41,6 +41,8 @@ function InputPhone({name, field, ...rest}) {
         placeholder={field.mask}
         keyboardAppearance="dark"
         keyboardType="numeric"
+        errorStyle={{ color: 'red', fontSize: 15 }}
+        errorMessage={error}
         defaultValue={defaultValue}
         placeholderTextColor="#666360"
         onChangeText={(value) => {
@@ -50,7 +52,6 @@ function InputPhone({name, field, ...rest}) {
         }}
         {...rest}
       />
-      {error && <Text>{error}</Text>}
     </Container>
   );
 }

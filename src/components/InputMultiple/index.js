@@ -1,20 +1,20 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {Text, FlatList} from 'react-native';
-import {useField} from '@unform/core';
+import { Text, FlatList } from 'react-native';
+import { useField } from '@unform/core';
 
-import {BooleanInput, Title, Container} from './styles';
+import { BooleanInput, Title, Container } from './styles';
 
-function InputMultiple({name, field, ...rest}) {
+function InputMultiple({ name, field, ...rest }) {
   const toMultipleStateArray = (arr) => {
-    const multipleState = arr.map((item) => ({...item, isSelected: false}));
+    const multipleState = arr.map((item) => ({ ...item, isSelected: false }));
     return multipleState;
   };
   const [selected, setSelected] = useState(toMultipleStateArray(field.choices));
   const [toRefresh, setRefresh] = useState(true);
   const inputRef = useRef(selected);
 
-  const {fieldName, registerField, defaultValue, error} = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
 
   const onChange = (item, index) => {
     const valueList = selected;
@@ -31,7 +31,7 @@ function InputMultiple({name, field, ...rest}) {
     }
   };
 
-  const renderItem = ({item, index}) => (
+  const renderItem = ({ item, index }) => (
     <BooleanInput
       key={item.value}
       title={item.name}
@@ -69,7 +69,18 @@ function InputMultiple({name, field, ...rest}) {
         renderItem={renderItem}
         keyExtractor={(item) => item.value}
       />
-      {error && <Text>{error}</Text>}
+      {error && (
+        <Text
+          style={{
+            color: 'red',
+            fontSize: 15,
+            marginLeft: 10,
+            marginBottom: 10,
+          }}
+        >
+          {error}
+        </Text>
+      )}
     </Container>
   );
 }

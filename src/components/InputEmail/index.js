@@ -1,14 +1,14 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import {Text} from 'react-native';
-import {useField} from '@unform/core';
+import { Text } from 'react-native';
+import { useField } from '@unform/core';
 
-import {EmailInput, Container} from './styles';
+import { EmailInput, Container } from './styles';
 
-function InputEmail({name, field, ...rest}) {
+function InputEmail({ name, field, ...rest }) {
   const inputRef = useRef(null);
 
-  const {fieldName, registerField, defaultValue, error} = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
 
   useEffect(() => {
     inputRef.current.value = defaultValue;
@@ -24,7 +24,7 @@ function InputEmail({name, field, ...rest}) {
         ref.clear();
       },
       setValue(ref, value) {
-        ref.setNativeProps({text: value});
+        ref.setNativeProps({ text: value });
         inputRef.current.value = value;
       },
       getValue(ref) {
@@ -40,6 +40,8 @@ function InputEmail({name, field, ...rest}) {
         label={field.title}
         placeholder={field.mask}
         keyboardAppearance="dark"
+        errorStyle={{ color: 'red', fontSize: 15 }}
+        errorMessage={error}
         keyboardType="email-address"
         defaultValue={defaultValue}
         placeholderTextColor="#666360"
@@ -50,7 +52,6 @@ function InputEmail({name, field, ...rest}) {
         }}
         {...rest}
       />
-      {error && <Text>{error}</Text>}
     </Container>
   );
 }
