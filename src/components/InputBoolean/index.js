@@ -17,7 +17,7 @@ function InputBoolean({ name, field, ...rest }) {
   };
 
   useEffect(() => {
-    defaultValue
+    defaultValue && field.required
       ? (inputRef.current = defaultValue)
       : (inputRef.current = false);
   }, [defaultValue]);
