@@ -5,8 +5,13 @@ import {
   dateObjectValidation,
   multipleObjectValidation,
   optionObjectValidation,
-  dateOnlyRequiredObjectValidation,
   phoneObjectValidation,
+  dateOnlyRequiredObjectValidation,
+  textOnlyRequiredObjectValidation,
+  numberOnlyRequiredObjectValidation,
+  emailOnlyRequiredObjectValidation,
+  phoneOnlyRequiredObjectValidation,
+  booleanOnlyRequiredObjectValidation,
 } from '~/utils/ValidationsObjects';
 
 export function ValidationObjectBuilder(field) {
@@ -91,15 +96,67 @@ export function ValidationObjectBuilder(field) {
         break;
     }
   }
-  if (
-    field.constraints === undefined &&
-    field.type === 'DATE' &&
-    field.required === true
-  ) {
-    specificObjectValidation = dateOnlyRequiredObjectValidation(
-      field.name,
-      field.required
-    );
+  if (field.constraints === undefined && field.required === true) {
+    switch (field.type) {
+      case 'TEXT':
+        specificObjectValidation = textOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      case 'LONG_TEXT':
+        specificObjectValidation = textOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      case 'NUMBER':
+        specificObjectValidation = numberOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      case 'EMAIL':
+        specificObjectValidation = emailOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      case 'DATE':
+        specificObjectValidation = dateOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      case 'PHONE':
+        specificObjectValidation = phoneOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      case 'BOOLEAN':
+        specificObjectValidation = booleanOnlyRequiredObjectValidation(
+          field.name,
+          field.required
+        );
+
+        break;
+
+      default:
+        break;
+    }
   }
   return specificObjectValidation;
 }

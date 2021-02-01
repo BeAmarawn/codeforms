@@ -21,27 +21,23 @@ const FormScreen = ({ route, navigation }) => {
       const finalValidationObject = validationObject.filter(
         (item) => item !== undefined
       );
-      console.tron.log(finalValidationObject);
+
       const yupSchema = finalValidationObject.reduce(createYupSchema, {});
       const validateSchema = yup.object().shape(yupSchema);
 
       await validateSchema.validate(data, {
         abortEarly: false,
       });
-      console.tron.log('passou', data);
     } catch (err) {
       const validationErrors = {};
-      console.tron.log('errorr', err);
+
       if (err instanceof yup.ValidationError) {
         err.inner.forEach((error) => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
-        console.tron.log('qef', validationErrors);
       }
     }
-
-    console.tron.log(data);
   }
 
   return (

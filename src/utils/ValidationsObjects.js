@@ -1,3 +1,4 @@
+// Short/Long Text Validations Validations
 export const textObjectValidation = (objectConstraints, name, required) => {
   const ConstraintsTextTypes = (constraint, valueConstraint) => {
     let specificConstraint;
@@ -81,8 +82,6 @@ export const textObjectValidation = (objectConstraints, name, required) => {
     validatorObject.validations.push(specificConstraint);
   }
 
-  console.tron.log(validatorObject);
-
   return validatorObject;
 };
 
@@ -148,8 +147,6 @@ export const numberObjectValidation = (objectConstraints, name, required) => {
       validatorObject.validations.push(specificConstraint);
     }
 
-    console.tron.log(validatorObject);
-
     return validatorObject;
   }
   if (objectConstraints.regex !== undefined) {
@@ -194,12 +191,11 @@ export const numberObjectValidation = (objectConstraints, name, required) => {
       validatorObject.validations.push(specificConstraint);
     }
 
-    console.tron.log(validatorObject);
-
     return validatorObject;
   }
 };
 
+// Email Validations
 export const emailObjectValidation = (objectConstraints, name, required) => {
   const ConstraintsEmailTypes = (constraint, valueConstraint) => {
     let specificConstraint;
@@ -244,10 +240,10 @@ export const emailObjectValidation = (objectConstraints, name, required) => {
     validatorObject.validations.push(specificConstraint);
   }
 
-  console.tron.log(validatorObject);
-
   return validatorObject;
 };
+
+// Date Validations
 export const dateObjectValidation = (objectConstraints, name, required) => {
   const toDate = (dateStr) => {
     const [year, month, day] = dateStr.split('-');
@@ -314,11 +310,10 @@ export const dateObjectValidation = (objectConstraints, name, required) => {
     validatorObject.validations.push(specificConstraintTwo);
   }
 
-  console.tron.log(validatorObject);
-
   return validatorObject;
 };
 
+// Multiple Options Validations
 export const multipleObjectValidation = (name, required) => {
   const validationsArray = [];
 
@@ -341,11 +336,10 @@ export const multipleObjectValidation = (name, required) => {
     validatorObject.validations.push(specificConstraintTwo);
   }
 
-  console.tron.log(validatorObject);
-
   return validatorObject;
 };
 
+// Choose Option Validations
 export const optionObjectValidation = (name, required) => {
   const validationsArray = [];
 
@@ -368,36 +362,10 @@ export const optionObjectValidation = (name, required) => {
     validatorObject.validations.push(specificConstraintTwo);
   }
 
-  console.tron.log(validatorObject);
-
   return validatorObject;
 };
 
-export const dateOnlyRequiredObjectValidation = (name, required) => {
-  const validatorObject = {
-    id: name,
-    validationType: 'date',
-    validations: [],
-  };
-
-  if (required) {
-    const specificConstraint = {
-      type: 'required',
-      params: [`Esse Campo é obrigatório`],
-    };
-    const specificConstraintTwo = {
-      type: 'nullable',
-      params: [],
-    };
-    validatorObject.validations.push(specificConstraint);
-    validatorObject.validations.push(specificConstraintTwo);
-  }
-
-  console.tron.log(validatorObject);
-
-  return validatorObject;
-};
-
+// Phone Validations
 export const phoneObjectValidation = (objectConstraints, name, required) => {
   const ConstraintsNumberTypes = (constraint, valueConstraint) => {
     let specificConstraint;
@@ -440,7 +408,143 @@ export const phoneObjectValidation = (objectConstraints, name, required) => {
     validatorObject.validations.push(specificConstraint);
   }
 
-  console.tron.log(validatorObject);
+  return validatorObject;
+};
+
+// Only Required Validations
+export const dateOnlyRequiredObjectValidation = (name, required) => {
+  const validatorObject = {
+    id: name,
+    validationType: 'date',
+    validations: [],
+  };
+
+  if (required) {
+    const specificConstraint = {
+      type: 'required',
+      params: [`Esse Campo é obrigatório`],
+    };
+    const specificConstraintTwo = {
+      type: 'nullable',
+      params: [],
+    };
+    validatorObject.validations.push(specificConstraint);
+    validatorObject.validations.push(specificConstraintTwo);
+  }
+
+  return validatorObject;
+};
+
+export const textOnlyRequiredObjectValidation = (name, required) => {
+  const validatorObject = {
+    id: name,
+    validationType: 'string',
+    validations: [],
+  };
+
+  if (required) {
+    const specificConstraint = {
+      type: 'required',
+      params: [`Esse Campo é obrigatório`],
+    };
+    const specificConstraintTwo = {
+      type: 'nullable',
+      params: [],
+    };
+    validatorObject.validations.push(specificConstraint);
+    validatorObject.validations.push(specificConstraintTwo);
+  }
+
+  return validatorObject;
+};
+
+export const numberOnlyRequiredObjectValidation = (name, required) => {
+  const validatorObject = {
+    id: name,
+    validationType: 'number',
+    validations: [],
+  };
+
+  if (required) {
+    const specificConstraint = {
+      type: 'required',
+      params: [`Esse Campo é obrigatório`],
+    };
+    const specificConstraintTwo = {
+      type: 'nullable',
+      params: [],
+    };
+    validatorObject.validations.push(specificConstraint);
+    validatorObject.validations.push(specificConstraintTwo);
+  }
+
+  return validatorObject;
+};
+
+export const emailOnlyRequiredObjectValidation = (name, required) => {
+  const validatorObject = {
+    id: name,
+    validationType: 'string',
+    validations: [],
+  };
+
+  if (required) {
+    const specificConstraint = {
+      type: 'required',
+      params: [`Esse Campo é obrigatório`],
+    };
+    const specificConstraintTwo = {
+      type: 'nullable',
+      params: [],
+    };
+    validatorObject.validations.push(specificConstraint);
+    validatorObject.validations.push(specificConstraintTwo);
+  }
+
+  return validatorObject;
+};
+
+export const phoneOnlyRequiredObjectValidation = (name, required) => {
+  const validatorObject = {
+    id: name,
+    validationType: 'number',
+    validations: [],
+  };
+
+  if (required) {
+    const specificConstraint = {
+      type: 'required',
+      params: [`Esse Campo é obrigatório`],
+    };
+    const specificConstraintTwo = {
+      type: 'nullable',
+      params: [],
+    };
+    validatorObject.validations.push(specificConstraint);
+    validatorObject.validations.push(specificConstraintTwo);
+  }
+
+  return validatorObject;
+};
+export const booleanOnlyRequiredObjectValidation = (name, required) => {
+  const validatorObject = {
+    id: name,
+    validationType: 'boolean',
+    validations: [],
+  };
+
+  if (required) {
+    const specificConstraint = {
+      type: 'required',
+      params: [`Esse Campo é obrigatório`],
+    };
+    const specificConstraintTwo = {
+      type: 'nullable',
+      params: [],
+    };
+    validatorObject.validations.push(specificConstraint);
+    validatorObject.validations.push(specificConstraintTwo);
+  }
 
   return validatorObject;
 };

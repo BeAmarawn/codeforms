@@ -1,15 +1,15 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {Text} from 'react-native';
-import {useField} from '@unform/core';
+import { Text } from 'react-native';
+import { useField } from '@unform/core';
 
-import {BooleanInput, Title, Container} from './styles';
+import { BooleanInput, Title, Container } from './styles';
 
-function InputBoolean({name, field, ...rest}) {
+function InputBoolean({ name, field, ...rest }) {
   const [selected, setSelected] = useState(false);
   const inputRef = useRef(selected);
 
-  const {fieldName, registerField, defaultValue, error} = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
 
   const onChange = () => {
     inputRef.current = !selected;
@@ -17,7 +17,9 @@ function InputBoolean({name, field, ...rest}) {
   };
 
   useEffect(() => {
-    inputRef.current = defaultValue;
+    defaultValue
+      ? (inputRef.current = defaultValue)
+      : (inputRef.current = false);
   }, [defaultValue]);
 
   useEffect(() => {
@@ -43,7 +45,18 @@ function InputBoolean({name, field, ...rest}) {
         onPress={onChange}
         {...rest}
       />
-      {error && <Text>{error}</Text>}
+      {error && (
+        <Text
+          style={{
+            color: 'red',
+            fontSize: 15,
+            marginLeft: 10,
+            marginBottom: 10,
+          }}
+        >
+          {error}
+        </Text>
+      )}
     </Container>
   );
 }
