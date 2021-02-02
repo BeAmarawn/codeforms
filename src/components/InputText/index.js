@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import QuestionIcon from 'react-native-vector-icons/AntDesign';
+import { Tooltip } from 'react-native-elements';
 
 import { useField } from '@unform/core';
 import { transformToMaskString } from '~/utils/replaceMask';
@@ -9,6 +11,8 @@ import {
   Container,
   Title,
   ErrorTitle,
+  Header,
+  HintText,
 } from './styles';
 
 function InputText({ name, field, ...rest }) {
@@ -96,7 +100,18 @@ function InputText({ name, field, ...rest }) {
 
   return (
     <Container>
-      <Title>{field.title}</Title>
+      <Header>
+        <Title>{field.title}</Title>
+        {field.hint && (
+          <Tooltip
+            containerStyle={{ height: 'auto' }}
+            backgroundColor="#a75df2"
+            popover={<HintText>{field.hint}</HintText>}
+          >
+            <QuestionIcon name="questioncircle" size={25} color="#6714b7" />
+          </Tooltip>
+        )}
+      </Header>
       <InputShortTextNoMask
         ref={inputRef}
         keyboardAppearance="dark"
