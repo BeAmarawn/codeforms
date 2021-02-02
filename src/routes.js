@@ -1,13 +1,12 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {navigationRef} from './RootNavigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Apresentation from './pages/Apresentation';
 import StepOne from './pages/Steps/StepOne';
@@ -22,34 +21,35 @@ import FormScreen from './pages/FormScreen';
 const Stack = createStackNavigator();
 
 export default function Routes() {
-  const hasShortCode = useSelector((state) => state.formState.started);
+  const hasFormData = useSelector((state) => state.formState.formData);
   const firstAcess = useSelector((state) => state.formState.firstAcess);
   return (
-    <NavigationContainer ref={navigationRef}>
-      {firstAcess ? (
+    <NavigationContainer>
+      {firstAcess && (
         <Stack.Navigator>
           <Stack.Screen
             name="Apresentation"
             component={Apresentation}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="StepOne"
             component={StepOne}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="StepTwo"
             component={StepTwo}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="StepThree"
             component={StepThree}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
-      ) : (
+      )}
+      {!hasFormData && !firstAcess && (
         <Stack.Navigator
           screenOptions={{
             headerStyle: {
@@ -59,11 +59,12 @@ export default function Routes() {
               color: '#fff',
             },
             headerBackImage: () => <Icon name="left" size={25} color="#fff" />,
-          }}>
+          }}
+        >
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{headerShown: false}}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="EnterCode"
@@ -79,19 +80,25 @@ export default function Routes() {
               title: 'Leia o QR do seu Form',
             }}
           />
+        </Stack.Navigator>
+      )}
+      {hasFormData && !firstAcess && (
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#6719b7',
+            },
+          }}
+        >
           <Stack.Screen
             name="FormStart"
             component={FormStart}
-            options={{
-              title: 'Avance para iniciar!',
-            }}
+            options={{ headerShown: false }}
           />
           <Stack.Screen
             name="FormScreen"
             component={FormScreen}
-            options={{
-              title: '',
-            }}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       )}
