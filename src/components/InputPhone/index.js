@@ -22,6 +22,7 @@ function InputPhone({ name, field, ...rest }) {
 
   useEffect(() => {
     inputRef.current.value = defaultValue;
+    setValue(defaultValue);
   }, [defaultValue]);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function InputPhone({ name, field, ...rest }) {
         inputRef.current.value = value;
       },
       getValue(ref) {
-        return parseFloat(ref.getRawValue());
+        return ref.getRawValue();
       },
     });
   }, [fieldName, registerField]);

@@ -20,6 +20,9 @@ function InputOption({ name, field, ...rest }) {
 
   useEffect(() => {
     inputRef.current = defaultValue;
+    if (defaultValue) {
+      setSelected(defaultValue);
+    }
   }, [defaultValue]);
 
   useEffect(() => {

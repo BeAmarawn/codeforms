@@ -46,6 +46,25 @@ function InputMultiple({ name, field, ...rest }) {
 
   useEffect(() => {
     inputRef.current = defaultValue;
+    if (Array.isArray(defaultValue)) {
+      if (defaultValue.length > 0) {
+        const oldStatesArray = [];
+        const previouslyStates = selected.forEach((item) => {
+          defaultValue.forEach((oldItem) => {
+            if (oldItem.value === item.value) {
+              item.isSelected = true;
+              oldStatesArray.push(item);
+            } else {
+              oldStatesArray.push(item);
+            }
+          });
+        });
+        const noDuplicateItens = oldStatesArray.filter(
+          (elem, index, self) => index === self.indexOf(elem)
+        );
+        setSelected(noDuplicateItens);
+      }
+    }
   }, [defaultValue]);
 
   useEffect(() => {

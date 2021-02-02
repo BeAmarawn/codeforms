@@ -12,7 +12,7 @@ import { Title, Container, Header, HintText } from './styles';
 function InputDate({ name, field, ...rest }) {
   const [selectedDate, setSelectedDate] = useState(undefined);
 
-  const { fieldName, registerField, error } = useField(name);
+  const { fieldName, registerField, error, defaultValue } = useField(name);
 
   const datePickerRef = useRef(selectedDate);
 
