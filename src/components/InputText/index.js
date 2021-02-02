@@ -1,11 +1,72 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import { Text } from 'react-native';
 import { useField } from '@unform/core';
+import { transformToMaskString } from '~/utils/replaceMask';
 
-import { InputShortText, Container } from './styles';
+import {
+  InputShortText,
+  InputShortTextNoMask,
+  Container,
+  Title,
+  ErrorTitle,
+} from './styles';
 
 function InputText({ name, field, ...rest }) {
+  if (field.mask) {
+    const inputRef = useRef(null);
+    const [value, setValue] = useState('');
+
+    const { fieldName, registerField, defaultValue, error } = useField(name);
+
+    useEffect(() => {
+      inputRef.current.value = defaultValue;
+    }, [defaultValue]);
+
+    useEffect(() => {
+      registerField({
+        name: fieldName,
+        ref: inputRef.current,
+        path: 'value',
+        clearValue(ref) {
+          ref.value = '';
+          ref.clear();
+        },
+        setValue(ref, value) {
+          ref.setNativeProps({ text: value });
+          inputRef.current.value = value;
+        },
+        getValue(ref) {
+          return ref.getRawValue();
+        },
+      });
+    }, [fieldName, registerField]);
+
+    return (
+      <Container>
+        <Title>{field.title}</Title>
+        <InputShortText
+          ref={inputRef}
+          type="custom"
+          options={{
+            mask: transformToMaskString(field.mask),
+            getRawValue: (v) => v.replace(/[^A-Za-z0-9]/g, ''),
+          }}
+          keyboardAppearance="dark"
+          value={value}
+          defaultValue={defaultValue}
+          errorStyle={{ color: 'red', fontSize: 15 }}
+          errorMessage={error}
+          placeholderTextColor="#666360"
+          onChangeText={(val) => {
+            setValue(val);
+            inputRef.current.value = val;
+          }}
+          {...rest}
+        />
+        {error && <ErrorTitle>{error}</ErrorTitle>}
+      </Container>
+    );
+  }
   const inputRef = useRef(null);
 
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -35,22 +96,22 @@ function InputText({ name, field, ...rest }) {
 
   return (
     <Container>
-      <InputShortText
+      <Title>{field.title}</Title>
+      <InputShortTextNoMask
         ref={inputRef}
-        label={field.title}
-        placeholder={field.mask}
         keyboardAppearance="dark"
         defaultValue={defaultValue}
         errorStyle={{ color: 'red', fontSize: 15 }}
         errorMessage={error}
         placeholderTextColor="#666360"
-        onChangeText={(value) => {
+        onChangeText={(val) => {
           if (inputRef.current) {
-            inputRef.current.value = value;
+            inputRef.current.value = val;
           }
         }}
         {...rest}
       />
+      {error && <ErrorTitle>{error}</ErrorTitle>}
     </Container>
   );
 }
