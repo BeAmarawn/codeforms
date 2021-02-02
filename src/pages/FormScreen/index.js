@@ -28,6 +28,9 @@ const FormScreen = ({ route, navigation }) => {
       await validateSchema.validate(data, {
         abortEarly: false,
       });
+      console.tron.log('Validations All Ok', finalValidationObject);
+      formRef.current.setErrors({});
+      console.tron.log('Form Answer', data);
     } catch (err) {
       const validationErrors = {};
 
@@ -36,6 +39,8 @@ const FormScreen = ({ route, navigation }) => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
+        console.tron.log('Validations Fails', validationErrors);
+        console.tron.log('Form Answer', data);
       }
     }
   }
