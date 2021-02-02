@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import {
@@ -13,13 +13,13 @@ import {
 import Logo from '~/assets/logo/codeforms.png';
 import SentForm from '~/assets/illustrations/sent_form.png';
 
-import {firstAcessConfirm} from '~/store/modules/formState/actions';
+import { firstAcessConfirm } from '~/store/modules/formState/actions';
 
 const StepThree = () => {
   const dispatch = useDispatch();
   const boolean = true;
   function handleFinalizeTutorial() {
-    dispatch(firstAcessConfirm({boolean}));
+    dispatch(firstAcessConfirm({ boolean }));
   }
   return (
     <Container>

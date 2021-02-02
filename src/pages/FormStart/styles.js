@@ -2,10 +2,28 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  padding-top: 5%;
   padding-bottom: 5%;
   justify-content: center;
   background-color: #fff;
+`;
+export const ProgressIndicatorHeader = styled.TouchableOpacity`
+  padding-right: 10px;
+  padding-left: 10px;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  height: 60px;
+  background-color: #1dd05d;
+`;
+export const HeaderText = styled.Text`
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Roboto-Bold';
 `;
 export const PrincipalText = styled.Text`
   margin-bottom: auto;
@@ -23,6 +41,7 @@ export const DescriptionText = styled.Text`
   font-family: 'Roboto-Regular';
 `;
 export const DueDateText = styled.Text`
+  margin-top: 5%;
   margin-left: 15px;
   margin-bottom: 10%;
   margin-right: 10px;
