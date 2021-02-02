@@ -1,14 +1,15 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import {Text} from 'react-native';
-import {useField} from '@unform/core';
+import { useField } from '@unform/core';
+import { transformToMaskString } from '~/utils/replaceMask';
 
-import {PhoneInput, Container} from './styles';
+import { PhoneInput, Container, Title, ErrorTitle } from './styles';
 
-function InputPhone({name, field, ...rest}) {
-  const inputRef = useRef(null);
+function InputPhone({ name, field, ...rest }) {
+  const inputRef = useRef();
+  const [value, setValue] = useState('');
 
-  const {fieldName, registerField, defaultValue, error} = useField(name);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
 
   useEffect(() => {
     inputRef.current.value = defaultValue;
@@ -24,33 +25,37 @@ function InputPhone({name, field, ...rest}) {
         ref.clear();
       },
       setValue(ref, value) {
-        ref.setNativeProps({text: value});
+        ref.setNativeProps({ text: value });
         inputRef.current.value = value;
       },
       getValue(ref) {
-        return ref.value;
+        return parseFloat(ref.getRawValue());
       },
     });
   }, [fieldName, registerField]);
 
   return (
     <Container>
+      <Title>{field.title}</Title>
       <PhoneInput
         ref={inputRef}
-        label={field.title}
-        placeholder={field.mask}
+        type="custom"
+        options={{
+          mask: transformToMaskString(field.mask),
+          getRawValue: (v) => v.replace(/[^A-Za-z0-9]/g, ''),
+        }}
         keyboardAppearance="dark"
+        value={value}
         keyboardType="numeric"
         defaultValue={defaultValue}
         placeholderTextColor="#666360"
-        onChangeText={(value) => {
-          if (inputRef.current) {
-            inputRef.current.value = value;
-          }
+        onChangeText={(val) => {
+          setValue(val);
+          inputRef.current.value = val;
         }}
         {...rest}
       />
-      {error && <Text>{error}</Text>}
+      {error && <ErrorTitle>{error}</ErrorTitle>}
     </Container>
   );
 }
