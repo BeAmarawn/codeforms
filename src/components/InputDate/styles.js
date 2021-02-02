@@ -1,10 +1,22 @@
 import styled from 'styled-components/native';
 
 export const Title = styled.Text`
+  margin-top: 15px;
   margin-left: 10px;
   font-size: 16px;
   color: #8a96a1;
   font-family: 'Roboto-Bold';
+`;
+export const HintText = styled.Text`
+  margin-left: 10px;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Roboto-Regular';
+`;
+export const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 15px;
 `;
 export const Container = styled.View`
   margin-bottom: 25px;

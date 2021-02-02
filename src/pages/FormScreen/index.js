@@ -1,16 +1,32 @@
 import React, { useRef } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
+
+import ProgressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { Form } from '@unform/mobile';
 import * as yup from 'yup';
+
+import { saveProgressForm, signOut } from '~/store/modules/formState/actions';
 
 import { specificInputReturner } from '~/controller/FormTypeController';
 import { ValidationObjectBuilder } from '~/controller/ValidationObjectBuilder';
 import { createYupSchema } from '~/utils/yupSchemaCreator';
 
-import { Container, PrincipalText, ButtonText, EnterButton } from './styles';
+import {
+  Container,
+  PrincipalText,
+  ButtonText,
+  EnterButton,
+  Header,
+  SaveProgressButton,
+  ExitButton,
+  SaveProgressAndExitButtonText,
+} from './styles';
 
 const FormScreen = ({ route, navigation }) => {
-  const { formData } = route.params;
+  const dispatch = useDispatch();
+  const { formData, formPreviouslyProgress } = route.params;
   const formRef = useRef(null);
 
   async function handleSubmit(data) {
@@ -45,11 +61,41 @@ const FormScreen = ({ route, navigation }) => {
     }
   }
 
+  function handleSaveProgress() {
+    const formAnswers = formRef.current.getData();
+    dispatch(saveProgressForm(formAnswers));
+    Alert.alert('', 'Progresso Salvo!');
+    console.tron.log('Form Progress Saved!', formAnswers);
+  }
+
+  function handleLeaveForm() {
+    dispatch(signOut());
+    Alert.alert('', 'Progresso Eliminado!');
+  }
+
   return (
     <Container>
       <ScrollView>
+        <Header>
+          <SaveProgressButton onPress={() => handleSaveProgress()}>
+            <ProgressIcon name="progress-check" size={30} color="#fff" />
+            <SaveProgressAndExitButtonText>
+              Salvar Progresso
+            </SaveProgressAndExitButtonText>
+          </SaveProgressButton>
+          <ExitButton onPress={() => handleLeaveForm()}>
+            <ProgressIcon name="exit-run" size={30} color="#fff" />
+            <SaveProgressAndExitButtonText>
+              Abandonar Form
+            </SaveProgressAndExitButtonText>
+          </ExitButton>
+        </Header>
         <PrincipalText>{formData.title}</PrincipalText>
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form
+          ref={formRef}
+          initialData={formPreviouslyProgress}
+          onSubmit={handleSubmit}
+        >
           {formData.fields.map((field) =>
             specificInputReturner(field, field.name)
           )}

@@ -20,6 +20,8 @@ function InputBoolean({ name, field, ...rest }) {
     defaultValue && field.required
       ? (inputRef.current = defaultValue)
       : (inputRef.current = false);
+
+    setSelected(defaultValue);
   }, [defaultValue]);
 
   useEffect(() => {

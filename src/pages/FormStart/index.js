@@ -1,5 +1,6 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import { useSelector } from 'react-redux';
+import { ScrollView } from 'react-native';
 
 import {
   Container,
@@ -8,13 +9,18 @@ import {
   EnterButton,
   DescriptionText,
   DueDateText,
+  ProgressIndicatorHeader,
+  HeaderText,
 } from './styles';
 
-const FormStart = ({route, navigation}) => {
-  const {formData} = route.params;
+const FormStart = ({ route, navigation }) => {
+  const formData = useSelector((state) => state.formState.formData);
+  const formPreviouslyProgress = useSelector(
+    (state) => state.formState.formProgress
+  );
 
   function handleStart() {
-    navigation.navigate('FormScreen', {formData});
+    navigation.navigate('FormScreen', { formData, formPreviouslyProgress });
   }
 
   function formatDueDate(date) {
@@ -24,13 +30,21 @@ const FormStart = ({route, navigation}) => {
       return number;
     }
     return `${addZero(expirationDate.getUTCFullYear())}/${addZero(
-      expirationDate.getUTCMonth(),
+      expirationDate.getUTCMonth()
     )}/${addZero(expirationDate.getUTCDay())}`;
   }
 
   return (
     <Container>
       <ScrollView>
+        {Object.keys(formPreviouslyProgress).length === 0 ? (
+          <ProgressIndicatorHeader style={{ backgroundColor: '#6714b7' }} />
+        ) : (
+          <ProgressIndicatorHeader>
+            <HeaderText>Progresso anterior detectado!</HeaderText>
+          </ProgressIndicatorHeader>
+        )}
+
         <DueDateText>
           Data de Validade:{' '}
           {formData.dueDate
@@ -41,7 +55,11 @@ const FormStart = ({route, navigation}) => {
         <PrincipalText>{formData.title}</PrincipalText>
         <DescriptionText>{formData.description}</DescriptionText>
         <EnterButton onPress={() => handleStart()}>
-          <ButtonText>Começar</ButtonText>
+          <ButtonText>
+            {Object.keys(formPreviouslyProgress).length === 0
+              ? 'Iniciar'
+              : 'Continuar'}
+          </ButtonText>
         </EnterButton>
       </ScrollView>
     </Container>

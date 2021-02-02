@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import QuestionIcon from 'react-native-vector-icons/AntDesign';
+import { Tooltip } from 'react-native-elements';
 
 import { Text } from 'react-native';
 import { useField } from '@unform/core';
 
-import { LongTextInput, Container } from './styles';
+import { LongTextInput, Container, Header, HintText, Title } from './styles';
 
 function InputLongText({ name, field, ...rest }) {
   const inputRef = useRef(null);
@@ -35,9 +37,20 @@ function InputLongText({ name, field, ...rest }) {
 
   return (
     <Container>
+      <Header>
+        <Title>{field.title}</Title>
+        {field.hint && (
+          <Tooltip
+            containerStyle={{ height: 'auto' }}
+            backgroundColor="#a75df2"
+            popover={<HintText>{field.hint}</HintText>}
+          >
+            <QuestionIcon name="questioncircle" size={25} color="#6714b7" />
+          </Tooltip>
+        )}
+      </Header>
       <LongTextInput
         ref={inputRef}
-        label={field.title}
         multiline
         numberOfLines={5}
         placeholder={field.mask}

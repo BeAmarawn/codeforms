@@ -3,6 +3,8 @@ import produce from 'immer';
 const INITIAL_STATE = {
   shortCode: null,
   started: false,
+  formProgress: {},
+  formData: false,
   loading: false,
   firstAcess: true,
 };
@@ -16,12 +18,17 @@ export default function formState(state = INITIAL_STATE, action) {
       }
       case '@formState/START_SUCCESS': {
         draft.shortCode = action.payload.shortCode;
+        draft.formData = action.payload.formData;
         draft.started = true;
         draft.loading = false;
         break;
       }
       case '@formState/FIRST_ACESS': {
         draft.firstAcess = false;
+        break;
+      }
+      case '@formState/FORM_PROGRESS': {
+        draft.formProgress = action.payload.formAnswers;
         break;
       }
       case '@formState/START_FAILURE': {
@@ -31,6 +38,8 @@ export default function formState(state = INITIAL_STATE, action) {
       case '@formState/SIGN_OUT': {
         draft.shortCode = null;
         draft.started = false;
+        draft.formData = false;
+        draft.formProgress = {};
         break;
       }
       default:

@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
+import QuestionIcon from 'react-native-vector-icons/AntDesign';
+import { Tooltip } from 'react-native-elements';
 
 import DatePicker from 'react-native-modern-datepicker';
 
 import { Text } from 'react-native';
 import { useField } from '@unform/core';
 
-import { Title, Container } from './styles';
+import { Title, Container, Header, HintText } from './styles';
 
 function InputDate({ name, field, ...rest }) {
   const [selectedDate, setSelectedDate] = useState(undefined);
 
-  const { fieldName, registerField, error } = useField(name);
+  const { fieldName, registerField, error, defaultValue } = useField(name);
 
   const datePickerRef = useRef(selectedDate);
 
@@ -38,7 +40,18 @@ function InputDate({ name, field, ...rest }) {
 
   return (
     <Container>
-      <Title>{field.title}</Title>
+      <Header>
+        <Title>{field.title}</Title>
+        {field.hint && (
+          <Tooltip
+            containerStyle={{ height: 'auto' }}
+            backgroundColor="#a75df2"
+            popover={<HintText>{field.hint}</HintText>}
+          >
+            <QuestionIcon name="questioncircle" size={25} color="#6714b7" />
+          </Tooltip>
+        )}
+      </Header>
       <DatePicker
         options={{
           mainColor: '#A75DF2',
