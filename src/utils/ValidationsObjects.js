@@ -345,7 +345,7 @@ export const optionObjectValidation = (name, required) => {
 
   const validatorObject = {
     id: name,
-    validationType: 'object',
+    validationType: 'number',
     validations: validationsArray,
   };
 

@@ -12,6 +12,11 @@ const INITIAL_STATE = {
 export default function formState(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
+      case '@formState/FIRST_ACESS': {
+        draft.firstAcess = false;
+        break;
+      }
+
       case '@formState/START_REQUEST': {
         draft.loading = true;
         break;
@@ -23,16 +28,30 @@ export default function formState(state = INITIAL_STATE, action) {
         draft.loading = false;
         break;
       }
-      case '@formState/FIRST_ACESS': {
-        draft.firstAcess = false;
-        break;
-      }
-      case '@formState/FORM_PROGRESS': {
-        draft.formProgress = action.payload.formAnswers;
-        break;
-      }
       case '@formState/START_FAILURE': {
         draft.loading = false;
+        break;
+      }
+
+      case '@formState/SEND_REQUEST': {
+        draft.loading = true;
+        break;
+      }
+      case '@formState/SEND_SUCCESS': {
+        draft.shortCode = null;
+        draft.formData = false;
+        draft.formProgress = {};
+        draft.started = true;
+        draft.loading = false;
+        break;
+      }
+      case '@formState/SEND_FAILURE': {
+        draft.loading = false;
+        break;
+      }
+
+      case '@formState/FORM_PROGRESS': {
+        draft.formProgress = action.payload.formAnswers;
         break;
       }
       case '@formState/SIGN_OUT': {

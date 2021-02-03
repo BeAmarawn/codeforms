@@ -14,14 +14,14 @@ function InputOption({ name, field, ...rest }) {
   const { fieldName, registerField, defaultValue, error } = useField(name);
 
   const onChange = (item) => {
-    inputRef.current = { value: item.value };
+    inputRef.current = item.value;
     setSelected({ value: item.value });
   };
 
   useEffect(() => {
     inputRef.current = defaultValue;
     if (defaultValue) {
-      setSelected(defaultValue);
+      setSelected({ value: defaultValue });
     }
   }, [defaultValue]);
 
@@ -34,6 +34,9 @@ function InputOption({ name, field, ...rest }) {
         ref.clear();
       },
       getValue() {
+        // if (inputRef.current.value !== undefined) {
+        //   return `${inputRef.current.value}`;
+        // }
         return inputRef.current;
       },
     });

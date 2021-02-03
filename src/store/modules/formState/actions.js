@@ -28,6 +28,22 @@ export function startFailure() {
     type: '@formState/START_FAILURE',
   };
 }
+export function sendRequest(objectFormAnswers, shortCode) {
+  return {
+    type: '@formState/SEND_REQUEST',
+    payload: { objectFormAnswers, shortCode },
+  };
+}
+export function sendSuccess() {
+  return {
+    type: '@formState/SEND_SUCCESS',
+  };
+}
+export function sendFailure() {
+  return {
+    type: '@formState/SEND_FAILURE',
+  };
+}
 export function signOut() {
   return {
     type: '@formState/SIGN_OUT',
