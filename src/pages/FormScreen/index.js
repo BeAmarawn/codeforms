@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
+import Modal from 'react-native-modal';
 import { ScrollView, Alert } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ProgressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import LottieView from 'lottie-react-native';
 
 import { Form } from '@unform/mobile';
 import * as yup from 'yup';
@@ -28,8 +30,11 @@ import {
   SaveProgressAndExitButtonText,
 } from './styles';
 
+import sendLoading from '~/assets/animations/send_loading.json';
+
 const FormScreen = ({ route, navigation }) => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.formState.loading);
   const { formData, formPreviouslyProgress } = route.params;
   const formRef = useRef(null);
 
@@ -95,6 +100,9 @@ const FormScreen = ({ route, navigation }) => {
             </SaveProgressAndExitButtonText>
           </ExitButton>
         </Header>
+        <Modal isVisible={loading}>
+          <LottieView source={sendLoading} autoPlay loop />
+        </Modal>
         <PrincipalText>{formData.title}</PrincipalText>
         <Form
           ref={formRef}
