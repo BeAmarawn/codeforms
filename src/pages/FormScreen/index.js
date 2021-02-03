@@ -7,7 +7,11 @@ import ProgressIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Form } from '@unform/mobile';
 import * as yup from 'yup';
 
-import { saveProgressForm, signOut } from '~/store/modules/formState/actions';
+import {
+  saveProgressForm,
+  signOut,
+  sendRequest,
+} from '~/store/modules/formState/actions';
 
 import { specificInputReturner } from '~/controller/FormTypeController';
 import { ValidationObjectBuilder } from '~/controller/ValidationObjectBuilder';
@@ -47,6 +51,7 @@ const FormScreen = ({ route, navigation }) => {
       console.tron.log('Validations All Ok', finalValidationObject);
       formRef.current.setErrors({});
       console.tron.log('Form Answer', data);
+      dispatch(sendRequest(data, formData.shortCode));
     } catch (err) {
       const validationErrors = {};
 

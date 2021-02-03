@@ -22,12 +22,22 @@ function InputMultiple({ name, field, ...rest }) {
     const valueList = selected;
     if (valueList[index].isSelected) {
       valueList[index].isSelected = false;
-      inputRef.current = valueList.filter((i) => i.isSelected === true);
+      const filterArr = valueList.map((i) => {
+        if (i.isSelected === true) {
+          return i.value;
+        }
+      });
+      inputRef.current = filterArr.filter((i) => i !== undefined);
       setSelected(valueList);
       setRefresh(!toRefresh);
     } else {
       valueList[index].isSelected = true;
-      inputRef.current = valueList.filter((i) => i.isSelected === true);
+      const filterArr = valueList.map((i) => {
+        if (i.isSelected === true) {
+          return i.value;
+        }
+      });
+      inputRef.current = filterArr.filter((i) => i !== undefined);
       setSelected(valueList);
       setRefresh(!toRefresh);
     }
@@ -51,7 +61,7 @@ function InputMultiple({ name, field, ...rest }) {
         const oldStatesArray = [];
         const previouslyStates = selected.forEach((item) => {
           defaultValue.forEach((oldItem) => {
-            if (oldItem.value === item.value) {
+            if (oldItem === item.value) {
               item.isSelected = true;
               oldStatesArray.push(item);
             } else {
