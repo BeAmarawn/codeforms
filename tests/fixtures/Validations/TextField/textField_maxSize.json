@@ -1,0 +1,8 @@
+{
+  "constraints": {
+    "maxSize": 6
+  },
+  "name": "name",
+  "type": "TEXT",
+  "title": "Nome completo"
+}
