@@ -1,0 +1,14 @@
+{
+  "type":"OPTION",
+  "title":"Nível técnico",
+  "name":"level",
+  "required":true,
+  "choices":
+    [
+      {"value":"0","name":"Estágio"},
+      {"name":"Júnior","value":"1"},
+      {"value":"2","name":"Pleno"},
+      {"name":"Sênior","value":"3"},
+      {"name":"Especialista","value":"4"}
+    ]
+}
