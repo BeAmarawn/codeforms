@@ -1,3 +1,5 @@
+import { toDate, toBrazillianDate } from '~/utils/formatDateFunctions';
+
 // Short/Long Text Validations Validations
 export const textObjectValidation = (objectConstraints, name, required) => {
   const ConstraintsTextTypes = (constraint, valueConstraint) => {
@@ -245,14 +247,6 @@ export const emailObjectValidation = (objectConstraints, name, required) => {
 
 // Date Validations
 export const dateObjectValidation = (objectConstraints, name, required) => {
-  const toDate = (dateStr) => {
-    const [year, month, day] = dateStr.split('-');
-    return new Date(year, month - 1, day);
-  };
-  const toBrazillianDate = (dateStr) => {
-    const [year, month, day] = dateStr.split('-');
-    return `${day}/${month}/${year}`;
-  };
   const ConstraintsDateTypes = (constraint, valueConstraint) => {
     let specificConstraint;
     switch (constraint) {
