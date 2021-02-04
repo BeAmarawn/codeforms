@@ -7,7 +7,7 @@ export const textObjectValidation = (objectConstraints, name, required) => {
     switch (constraint) {
       case 'size':
         specificConstraint = {
-          type: 'lenght',
+          type: 'length',
           params: [
             valueConstraint,
             `O Campo deve possuir ${valueConstraint} caracteres`,
