@@ -27,13 +27,8 @@ describe('Test options input validation', () => {
     const yupSchemaObject = validatorObject.reduce(createYupSchema, {});
     const validationSchema = yup.object().shape(yupSchemaObject);
 
-    try {
-      const validationResult = await validationSchema.isValid(dataToValidate); // If the data is valid, this must return stuff like true
+    const validationResult = await validationSchema.isValid(dataToValidate); // If the data is valid, this must return stuff like true
 
-      expect(validationResult).toEqual(true); // This is not our error!
-    } catch (error) {
-      expect(error.errors[0]).toBe('Esse Campo é obrigatório');
-      expect(error).toBeInstanceOf(yup.ValidationError);
-    }
+    expect(validationResult).toEqual(true); // This is not our error!
   });
 });
