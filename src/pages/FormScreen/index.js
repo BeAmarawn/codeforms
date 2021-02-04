@@ -38,11 +38,13 @@ const FormScreen = ({ route, navigation }) => {
   const { formData, formPreviouslyProgress } = route.params;
   const formRef = useRef(null);
 
-  async function handleSubmit(data) {
+  // Function to submit form
+  async function handleSubmit(answers) {
     try {
       const validationObject = formData.fields.map((item) =>
         ValidationObjectBuilder(item)
       );
+
       const finalValidationObject = validationObject.filter(
         (item) => item !== undefined
       );
@@ -50,13 +52,13 @@ const FormScreen = ({ route, navigation }) => {
       const yupSchema = finalValidationObject.reduce(createYupSchema, {});
       const validateSchema = yup.object().shape(yupSchema);
 
-      await validateSchema.validate(data, {
+      await validateSchema.validate(answers, {
         abortEarly: false,
       });
       console.tron.log('Validations All Ok', finalValidationObject);
       formRef.current.setErrors({});
-      console.tron.log('Form Answer', data);
-      dispatch(sendRequest(data, formData.shortCode));
+      console.tron.log('Form Answer', answers);
+      dispatch(sendRequest(answers, formData.shortCode));
     } catch (err) {
       const validationErrors = {};
 
@@ -66,7 +68,7 @@ const FormScreen = ({ route, navigation }) => {
         });
         formRef.current.setErrors(validationErrors);
         console.tron.log('Validations Fails', validationErrors);
-        console.tron.log('Form Answer', data);
+        console.tron.log('Form Answer', answers);
       }
     }
   }
