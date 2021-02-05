@@ -55,9 +55,9 @@ const FormScreen = ({ route, navigation }) => {
       await validateSchema.validate(answers, {
         abortEarly: false,
       });
-      console.tron.log('Validations All Ok', finalValidationObject);
+      // console.tron.log('Validations All Ok', finalValidationObject);
       formRef.current.setErrors({});
-      console.tron.log('Form Answer', answers);
+      // console.tron.log('Form Answer', answers);
       dispatch(sendRequest(answers, formData.shortCode));
     } catch (err) {
       const validationErrors = {};
@@ -67,8 +67,8 @@ const FormScreen = ({ route, navigation }) => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
-        console.tron.log('Validations Fails', validationErrors);
-        console.tron.log('Form Answer', answers);
+        // console.tron.log('Validations Fails', validationErrors);
+        // console.tron.log('Form Answer', answers);
       }
     }
   }
@@ -77,7 +77,7 @@ const FormScreen = ({ route, navigation }) => {
     const formAnswers = formRef.current.getData();
     dispatch(saveProgressForm(formAnswers));
     Alert.alert('', 'Progresso Salvo!');
-    console.tron.log('Form Progress Saved!', formAnswers);
+    // console.tron.log('Form Progress Saved!', formAnswers);
   }
 
   function handleLeaveForm() {
