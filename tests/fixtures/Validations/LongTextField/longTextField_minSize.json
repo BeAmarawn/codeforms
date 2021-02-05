@@ -1,0 +1,8 @@
+{
+  "constraints": {
+    "minSize": 5
+  },
+  "name": "description",
+  "type": "LONG_TEXT",
+  "title": "Descrição"
+}

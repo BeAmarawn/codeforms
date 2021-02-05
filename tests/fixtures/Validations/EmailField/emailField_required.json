@@ -1,0 +1,6 @@
+{
+  "name": "email",
+  "required": true,
+  "title": "E-Mail",
+  "type": "EMAIL"
+}

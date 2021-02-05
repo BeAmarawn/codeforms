@@ -1,6 +1,7 @@
 module.exports = {
   env: {
     es6: true,
+    jest: true,
   },
   extends: ['airbnb', 'prettier', 'prettier/react'],
   globals: {
@@ -26,11 +27,11 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': 'off',
-    'no-unused-vars': ['error', {argsIgnorePattern: '^_'}],
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     'react/jsx-one-expression-per-line': 'off',
     'global-require': 'off',
     camelcase: 'off',
-    'react/prop-types': ['error', {ignore: ['navigation']}],
+    'react/prop-types': ['error', { ignore: ['navigation'] }],
   },
   settings: {
     'import/resolver': {

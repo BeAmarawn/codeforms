@@ -1,0 +1,6 @@
+{
+  "title": "Possui pets?",
+  "name": "pets",
+  "required": true,
+  "type": "BOOLEAN"
+}

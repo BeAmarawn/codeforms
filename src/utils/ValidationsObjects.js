@@ -1,3 +1,5 @@
+import { toDate, toBrazillianDate } from '~/utils/formatDateFunctions';
+
 // Short/Long Text Validations Validations
 export const textObjectValidation = (objectConstraints, name, required) => {
   const ConstraintsTextTypes = (constraint, valueConstraint) => {
@@ -5,7 +7,7 @@ export const textObjectValidation = (objectConstraints, name, required) => {
     switch (constraint) {
       case 'size':
         specificConstraint = {
-          type: 'lenght',
+          type: 'length',
           params: [
             valueConstraint,
             `O Campo deve possuir ${valueConstraint} caracteres`,
@@ -245,14 +247,6 @@ export const emailObjectValidation = (objectConstraints, name, required) => {
 
 // Date Validations
 export const dateObjectValidation = (objectConstraints, name, required) => {
-  const toDate = (dateStr) => {
-    const [year, month, day] = dateStr.split('-');
-    return new Date(year, month - 1, day);
-  };
-  const toBrazillianDate = (dateStr) => {
-    const [year, month, day] = dateStr.split('-');
-    return `${day}/${month}/${year}`;
-  };
   const ConstraintsDateTypes = (constraint, valueConstraint) => {
     let specificConstraint;
     switch (constraint) {
@@ -261,7 +255,7 @@ export const dateObjectValidation = (objectConstraints, name, required) => {
           type: 'min',
           params: [
             toDate(valueConstraint),
-            `A data mínima permitida é, ${toBrazillianDate(valueConstraint)} `,
+            `A data mínima permitida é, ${toBrazillianDate(valueConstraint)}`,
           ],
         };
 
@@ -272,7 +266,7 @@ export const dateObjectValidation = (objectConstraints, name, required) => {
           type: 'max',
           params: [
             toDate(valueConstraint),
-            `A data máxima permitida é, ${toBrazillianDate(valueConstraint)} `,
+            `A data máxima permitida é, ${toBrazillianDate(valueConstraint)}`,
           ],
         };
 

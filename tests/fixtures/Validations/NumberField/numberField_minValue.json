@@ -1,0 +1,8 @@
+{
+  "type": "NUMBER",
+  "name": "minValueTest",
+  "title": "Test",
+  "constraints": {
+    "minValue": 10
+  }
+}

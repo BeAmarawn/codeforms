@@ -1,0 +1,6 @@
+{
+  "type": "NUMBER",
+  "name": "verificationCode",
+  "title": "Código de verificação",
+  "required": true
+}
