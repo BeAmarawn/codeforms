@@ -3,22 +3,22 @@ A React Native App, to manage your forms.
 
 Link to Download apk: https://drive.google.com/drive/folders/1grSX0PJ4FGZfhDfNFMeg9HxAqwYUox6E?usp=sharing
 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s1.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s2.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s3.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s4.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s5.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s6.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s7.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s8.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s9.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s10.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s11.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s12.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s13.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s14.png) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s15.mp4) 
-![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/screenshots/s16.mp4)
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s1.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s2.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s3.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s4.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s5.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s6.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s7.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s8.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s9.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s10.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s11.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s12.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s13.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s14.png) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s15.mp4) 
+![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s16.mp4)
 
 
 
