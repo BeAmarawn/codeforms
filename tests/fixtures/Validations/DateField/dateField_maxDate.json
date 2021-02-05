@@ -1,0 +1,8 @@
+{
+  "title": "Data da mudança",
+  "name": "movingDate",
+  "constraints": {
+    "maxDate": "2021-02-01"
+  },
+  "type": "DATE"
+}

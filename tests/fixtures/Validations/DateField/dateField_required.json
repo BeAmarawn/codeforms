@@ -1,0 +1,6 @@
+{
+  "required": true,
+  "title": "Data da mudança",
+  "name": "movingDate",
+  "type": "DATE"
+}
