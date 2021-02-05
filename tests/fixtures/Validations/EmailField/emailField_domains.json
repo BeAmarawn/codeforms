@@ -1,0 +1,13 @@
+{
+  "name": "email",
+  "constraints": {
+    "domains": [
+      "gmail.com",
+      "hotmail.com",
+      "outlook.com",
+      "bol.com.br"
+    ]
+  },
+  "title": "E-Mail",
+  "type": "EMAIL"
+}
