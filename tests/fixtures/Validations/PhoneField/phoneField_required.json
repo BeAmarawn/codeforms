@@ -1,0 +1,6 @@
+{
+  "name": "phone",
+  "type": "PHONE",
+  "title": "Telefone",
+  "required": true
+}

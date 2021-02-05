@@ -1,0 +1,8 @@
+{
+  "type": "PHONE",
+  "name": "phone",
+  "constraints": {
+    "size": 11
+  },
+  "title": "Telefone"
+}
