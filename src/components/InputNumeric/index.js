@@ -14,7 +14,7 @@ import {
   ErrorTitle,
 } from './styles';
 
-function InputNumeric({ name, field, ...rest }) {
+function InputNumeric({ name, field, testId, ...rest }) {
   const inputRef = useRef(null);
 
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -57,6 +57,7 @@ function InputNumeric({ name, field, ...rest }) {
         )}
       </Header>
       <NumericInput
+        testID={testId}
         ref={inputRef}
         placeholder={field.mask}
         keyboardAppearance="dark"

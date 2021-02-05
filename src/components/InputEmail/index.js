@@ -6,7 +6,7 @@ import { useField } from '@unform/core';
 
 import { EmailInput, Container, Title, Header, HintText } from './styles';
 
-function InputEmail({ name, field, ...rest }) {
+function InputEmail({ name, field, testId, ...rest }) {
   const inputRef = useRef(null);
 
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -49,6 +49,7 @@ function InputEmail({ name, field, ...rest }) {
         )}
       </Header>
       <EmailInput
+        testID={testId}
         ref={inputRef}
         placeholder={field.mask}
         keyboardAppearance="dark"

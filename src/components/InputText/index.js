@@ -15,7 +15,7 @@ import {
   HintText,
 } from './styles';
 
-function InputText({ name, field, ...rest }) {
+function InputText({ name, field, testId, ...rest }) {
   if (field.mask) {
     const inputRef = useRef(null);
     const [value, setValue] = useState('');
@@ -49,6 +49,7 @@ function InputText({ name, field, ...rest }) {
       <Container>
         <Title>{field.title}</Title>
         <InputShortText
+          testID={testId}
           ref={inputRef}
           type="custom"
           options={{
@@ -113,6 +114,7 @@ function InputText({ name, field, ...rest }) {
         )}
       </Header>
       <InputShortTextNoMask
+        testID={testId}
         ref={inputRef}
         keyboardAppearance="dark"
         defaultValue={defaultValue}

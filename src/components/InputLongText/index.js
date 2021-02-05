@@ -7,7 +7,7 @@ import { useField } from '@unform/core';
 
 import { LongTextInput, Container, Header, HintText, Title } from './styles';
 
-function InputLongText({ name, field, ...rest }) {
+function InputLongText({ name, field, testId, ...rest }) {
   const inputRef = useRef(null);
 
   const { fieldName, registerField, defaultValue, error } = useField(name);
@@ -50,6 +50,7 @@ function InputLongText({ name, field, ...rest }) {
         )}
       </Header>
       <LongTextInput
+        testID={testId}
         ref={inputRef}
         multiline
         numberOfLines={5}

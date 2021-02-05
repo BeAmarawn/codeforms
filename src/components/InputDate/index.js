@@ -9,7 +9,7 @@ import { useField } from '@unform/core';
 
 import { Title, Container, Header, HintText } from './styles';
 
-function InputDate({ name, field, ...rest }) {
+function InputDate({ name, field, testId, ...rest }) {
   const [selectedDate, setSelectedDate] = useState(undefined);
 
   const { fieldName, registerField, error, defaultValue } = useField(name);
@@ -53,6 +53,7 @@ function InputDate({ name, field, ...rest }) {
         )}
       </Header>
       <DatePicker
+        testID={testId}
         options={{
           mainColor: '#A75DF2',
           borderColor: 'rgba(122, 146, 165, 0.1)',

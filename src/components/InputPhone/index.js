@@ -14,7 +14,7 @@ import {
   HintText,
 } from './styles';
 
-function InputPhone({ name, field, ...rest }) {
+function InputPhone({ name, field, testId, ...rest }) {
   const inputRef = useRef();
   const [value, setValue] = useState('');
 
@@ -59,6 +59,7 @@ function InputPhone({ name, field, ...rest }) {
         )}
       </Header>
       <PhoneInput
+        testID={testId}
         ref={inputRef}
         type="custom"
         options={{

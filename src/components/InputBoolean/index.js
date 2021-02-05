@@ -5,7 +5,7 @@ import { useField } from '@unform/core';
 
 import { BooleanInput, Title, Container } from './styles';
 
-function InputBoolean({ name, field, ...rest }) {
+function InputBoolean({ name, field, testId, ...rest }) {
   const [selected, setSelected] = useState(false);
   const inputRef = useRef(selected);
 
@@ -41,6 +41,7 @@ function InputBoolean({ name, field, ...rest }) {
   return (
     <Container>
       <BooleanInput
+        testID={testId}
         title={field.title}
         ref={inputRef}
         checked={selected}
