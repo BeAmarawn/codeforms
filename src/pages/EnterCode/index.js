@@ -38,7 +38,10 @@ const EnterCode = ({ navigation }) => {
           name: 'form-textbox-password',
         }}
       />
-      <EnterButton onPress={() => handleRegister()}>
+      <EnterButton
+        disabled={shortCode.length > 3}
+        onPress={() => handleRegister()}
+      >
         <ButtonText>Inserir Código</ButtonText>
       </EnterButton>
     </Container>
