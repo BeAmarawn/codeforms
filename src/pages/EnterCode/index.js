@@ -39,7 +39,7 @@ const EnterCode = ({ navigation }) => {
         }}
       />
       <EnterButton
-        disabled={shortCode.length > 3}
+        disabled={shortCode.length < 3}
         onPress={() => handleRegister()}
       >
         <ButtonText>Inserir Código</ButtonText>
