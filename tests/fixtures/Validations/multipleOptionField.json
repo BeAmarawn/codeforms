@@ -1,0 +1,36 @@
+{
+  "choices": [
+    {
+      "name": "Academia",
+      "value": "gym"
+    },
+    {
+      "value": "pool",
+      "name": "Piscina"
+    },
+    {
+      "value": "sportsCourt",
+      "name": "Quadra de esportes"
+    },
+    {
+      "value": "steamRoom",
+      "name": "Sauna"
+    },
+    {
+      "value": "washhouse",
+      "name": "Lavanderia"
+    },
+    {
+      "name": "Playground",
+      "value": "playground"
+    },
+    {
+      "name": "Churrasqueiras",
+      "value": "barbecuePit"
+    }
+  ],
+  "type": "MULTIPLE_CHOICES_OPTION",
+  "title": "Benefícios que deseja ter acesso",
+  "name": "features",
+  "required": true
+}
