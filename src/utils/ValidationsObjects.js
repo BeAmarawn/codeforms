@@ -255,7 +255,7 @@ export const dateObjectValidation = (objectConstraints, name, required) => {
           type: 'min',
           params: [
             toDate(valueConstraint),
-            `A data mínima permitida é, ${toBrazillianDate(valueConstraint)} `,
+            `A data mínima permitida é, ${toBrazillianDate(valueConstraint)}`,
           ],
         };
 
@@ -266,7 +266,7 @@ export const dateObjectValidation = (objectConstraints, name, required) => {
           type: 'max',
           params: [
             toDate(valueConstraint),
-            `A data máxima permitida é, ${toBrazillianDate(valueConstraint)} `,
+            `A data máxima permitida é, ${toBrazillianDate(valueConstraint)}`,
           ],
         };
 
