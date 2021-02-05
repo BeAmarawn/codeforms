@@ -1,0 +1,9 @@
+{
+  "required": false,
+  "title": "Quantos filhos você possui?",
+  "constraints": {
+    "acceptDecimal": false
+  },
+  "type": "NUMBER",
+  "name": "childrenCount"
+}
