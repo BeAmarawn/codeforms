@@ -1,7 +1,7 @@
 # CodeForms
 A React Native App, to manage your forms.
 
-Link to Download apk: https://drive.google.com/drive/folders/1grSX0PJ4FGZfhDfNFMeg9HxAqwYUox6E?usp=sharing
+Link to Download apk: https://drive.google.com/file/d/1yYPZ3PYwXo1CTlGFvRnkROEHCXT8T3Zl/view?usp=sharing
 
 ![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s1.png) 
 ![Preview-Screens](https://github.com/BeAmarawn/codeforms/blob/master/src/assets/screenshots/s2.png) 
